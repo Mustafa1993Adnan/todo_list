@@ -1,11 +1,26 @@
-import 'package:flutter/material.dart';
 
+import 'package:flutter/material.dart';
+import 'package:todo_list/screens/add_task_screen.dart';
+import 'package:todo_list/widgets/tasks_list.dart';
+
+
+// ignore: must_be_immutable
 class TasksScreen extends StatelessWidget {
+  bool isChecked = false;
+  Widget buildModalSheet(BuildContext context){
+    return(
+    Container()
+    );
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
-      floatingActionButton: FloatingActionButton(backgroundColor: Colors.lightBlueAccent,onPressed: null,
+      floatingActionButton: FloatingActionButton(backgroundColor: Colors.lightBlueAccent,
+        onPressed: (){
+        showModalBottomSheet(context: context, builder: (context) => AddTaskScreen() );
+      },
       child: Icon(Icons.add),),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,7 +44,9 @@ class TasksScreen extends StatelessWidget {
           ),
           Expanded(
             child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.only(topRight: Radius.circular(30),topLeft: Radius.circular(30))),
+              child: TasksList(isChecked: isChecked),
             ),
           )
         ],
