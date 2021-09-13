@@ -13,8 +13,14 @@ class AddTaskScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text('Add Text'),
-            TextField(),
+            Text(
+              'Add Text',
+              style: TextStyle(color: Colors.lightBlueAccent, fontSize: 35),
+            ),
+            TextField(
+              autofocus: true,
+              textAlign: TextAlign.center,
+            ),
             IconButton(onPressed: null, icon: Icon(Icons.add))
           ],
         ),
