@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list/widgets/tasks_tile.dart';
+
 class TasksList extends StatelessWidget {
   const TasksList({
     Key? key,
@@ -10,22 +11,12 @@ class TasksList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        TasksTile(isChecked: isChecked),
-        TasksTile(isChecked: isChecked),
-        TasksTile(isChecked: isChecked),
-        TasksTile(isChecked: isChecked),
-        TasksTile(isChecked: isChecked),
-        TasksTile(isChecked: isChecked),
-        TasksTile(isChecked: isChecked),
-        TasksTile(isChecked: isChecked),
-        TasksTile(isChecked: isChecked),
-        TasksTile(isChecked: isChecked),
-        TasksTile(isChecked: isChecked),
-        TasksTile(isChecked: isChecked),
-
-      ],
+    return Center(
+      child: ListView(
+        children: [
+          TasksTile(),
+        ],
+      ),
     );
   }
 }
