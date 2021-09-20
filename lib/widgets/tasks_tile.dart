@@ -1,46 +1,49 @@
 import 'package:flutter/material.dart';
 
-class TasksTile extends StatefulWidget {
-  @override
-  _TasksTileState createState() => _TasksTileState();
-}
-
-class _TasksTileState extends State<TasksTile> {
-  bool checkBoxValue = false;
-
-  void toggleCheckBoxStateFun(bool? checkBoxState) {
+class TasksTile extends StatelessWidget {
+  final bool checkBoxState;
+  final String taskTitle;
+  final Function toggleCheckboxCallback;
+  /* void toggleCheckBoxStateFun(bool checkBoxState) {
     setState(() {
-      checkBoxValue = checkBoxState!;
+      checkBoxValue = checkBoxState;
     });
-  }
+  }*/
+  TasksTile(
+      {required this.checkBoxState,
+      required this.taskTitle,
+      required this.toggleCheckboxCallback});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
         title: Text(
-          'Box One',
+          taskTitle,
           style: TextStyle(
-              decoration: checkBoxValue ? TextDecoration.lineThrough : null),
+              decoration: checkBoxState ? TextDecoration.lineThrough : null),
         ),
-        trailing: TaskCheckBox(
-            checkBoxState: checkBoxValue,
-            toggleCheckBoxState: toggleCheckBoxStateFun));
+        trailing: Checkbox(
+            checkColor: Colors.lightBlueAccent,
+            activeColor: Colors.white,
+            value: checkBoxState,
+            onChanged: (newValue) {
+              toggleCheckboxCallback(newValue);
+            }
+            /*onChanged: (newValue) {
+    toggleCheckBoxState(newValue);
+    },*/
+            ));
   }
 }
 
-class TaskCheckBox extends StatelessWidget {
+/*class TaskCheckBox extends StatelessWidget {
   final bool checkBoxState;
-  final Function(bool?) toggleCheckBoxState;
+  final Function toggleCheckBoxState;
 
   TaskCheckBox(
       {required this.checkBoxState, required this.toggleCheckBoxState});
   @override
   Widget build(BuildContext context) {
-    return Checkbox(
-      checkColor: Colors.lightBlueAccent,
-      activeColor: Colors.white,
-      value: checkBoxState,
-      onChanged: toggleCheckBoxState,
-    );
+    return
   }
-}
+}*/
